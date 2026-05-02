@@ -1,0 +1,18 @@
+Include ~/.ssh/work_config
+
+{{ if eq .chezmoi.os "darwin" -}}
+Include ~/.colima/ssh_config
+
+{{ end -}}
+Host github.com
+  AddKeysToAgent yes{{ if eq .chezmoi.os "darwin" }}
+  UseKeychain yes{{ end }}
+  IdentityFile ~/.ssh/id_ed25519
+
+Host github.com-personal
+  HostName github.com
+  User git
+  AddKeysToAgent yes{{ if eq .chezmoi.os "darwin" }}
+  UseKeychain yes{{ end }}
+  IdentityFile ~/.ssh/id_ed25519_personal
+  IdentitiesOnly yes

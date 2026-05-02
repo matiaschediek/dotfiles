@@ -1,0 +1,5 @@
+anthropic.claude-code
+git-ai.git-ai-vscode
+github.copilot-chat
+golang.go
+humao.rest-client

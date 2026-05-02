@@ -1,0 +1,24 @@
+# test/Dockerfile.idempotency
+# Verifica que correr bootstrap dos veces no rompe nada ni genera errores
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y \
+    sudo curl git make zsh build-essential ca-certificates unzip zip python3 \
+    && useradd -m -s /bin/zsh -G sudo matias \
+    && echo "matias ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && rm -rf /var/lib/apt/lists/*
+
+USER matias
+WORKDIR /home/matias
+ENV PATH="/home/matias/.local/bin:$PATH"
+COPY --chown=matias:matias . /home/matias/dotfiles
+
+# Primera ejecución
+RUN cd /home/matias/dotfiles && bash bootstrap.sh 2>&1 | tee /tmp/run1.log || true
+
+# Segunda ejecución — no debe fallar
+RUN cd /home/matias/dotfiles && bash bootstrap.sh 2>&1 | tee /tmp/run2.log || true
+
+CMD ["bash", "-c", \
+     "echo '=== RUN 1 ===' && cat /tmp/run1.log && echo '' && echo '=== RUN 2 ===' && cat /tmp/run2.log && echo '' && echo '=== DIFF ===' && diff /tmp/run1.log /tmp/run2.log || true"]

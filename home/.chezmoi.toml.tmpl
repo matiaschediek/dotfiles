@@ -1,0 +1,22 @@
+[data]
+  name  = "Matias Chediek"
+  email       = "matias.chediek@gmail.com"
+  github_user = "matiaschediek"
+{{ if eq .chezmoi.os "darwin" -}}
+  os              = "macos"
+  package_manager = "brew"
+  is_wsl          = false
+  homebrew_prefix = "/opt/homebrew"
+{{ else -}}
+  os              = "linux"
+  package_manager = "apt"
+  homebrew_prefix = "/home/linuxbrew/.linuxbrew"
+  is_wsl          = false
+{{ end -}}
+
+[edit]
+  command = "code"
+  args    = ["--wait"]
+
+[diff]
+  pager = "less"

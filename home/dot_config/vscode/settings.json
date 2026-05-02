@@ -1,0 +1,13 @@
+{
+    "workbench.colorTheme": "Dark+",
+    "window.commandCenter": true,
+    "workbench.sideBar.location": "right",
+    "files.autoSave": "onFocusChange",
+    "git.autofetch": true,
+    "editor.largeFileOptimizations": false,
+    "terminal.external.osxExec": "Ghostty.app",
+    "go.toolsManagement.autoUpdate": true,
+    "chat.agent.enabled": false,
+    "git.path": "/Users/mchediek/.git-ai/bin/git",
+    "chat.useHooks": true,
+}

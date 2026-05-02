@@ -1,0 +1,7 @@
+.env
+*.secret
+*.key
+!*.key.pub
+
+.DS_Store
+.chezmoi.toml

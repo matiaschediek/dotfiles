@@ -1,0 +1,13 @@
+git
+curl
+wget
+make
+build-essential
+zsh
+tmux
+neovim
+ripgrep
+fzf
+jq
+tree
+bat

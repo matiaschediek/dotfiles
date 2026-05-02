@@ -1,0 +1,32 @@
+# test/Dockerfile.ubuntu
+# Simula una máquina Ubuntu limpia para probar el bootstrap de dotfiles
+FROM ubuntu:22.04
+
+# Evitar prompts interactivos durante apt
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/Argentina/Buenos_Aires
+
+# Usuario no-root (simula entorno real)
+RUN apt-get update && apt-get install -y \
+    sudo curl git make zsh build-essential \
+    ca-certificates locales unzip zip python3 \
+    && locale-gen en_US.UTF-8 \
+    && useradd -m -s /bin/zsh -G sudo matias \
+    && echo "matias ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=en_US.UTF-8
+USER matias
+WORKDIR /home/matias
+
+# chezmoi se instala en ~/.local/bin — asegurarlo en PATH
+ENV PATH="/home/matias/.local/bin:$PATH"
+
+# Copiar el repo de dotfiles
+COPY --chown=matias:matias . /home/matias/dotfiles
+
+# Ejecutar bootstrap (|| true para capturar fallos parciales en tests)
+RUN cd /home/matias/dotfiles && bash bootstrap.sh 2>&1 || true
+
+# Entry point para correr los tests
+CMD ["bash", "-c", "cd /home/matias/dotfiles && bash test/run-tests.sh"]

@@ -1,0 +1,128 @@
+tap "espanso/espanso"
+
+# === Shell / Terminal ===
+brew "atuin"
+brew "bash"
+brew "bat"
+brew "coreutils"
+brew "fzf"
+brew "gnu-sed"
+brew "lsd"
+brew "ripgrep"
+brew "starship"
+brew "tmux"
+brew "tree"
+brew "zoxide"
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# === Git ===
+brew "git"
+brew "git-delta"
+brew "gh"
+brew "gnupg"
+brew "commitizen"
+
+# === Dev Tools ===
+brew "age"
+brew "adr-tools"
+brew "chezmoi"
+brew "colima"
+brew "docker"
+brew "docker-compose"
+brew "docker-credential-helper"
+brew "fswatch"
+brew "hyperfine"
+brew "jq"
+brew "make"
+brew "mas"
+brew "neovim"
+brew "opencode"
+brew "pipx"
+brew "repomix"
+brew "sevenzip"
+brew "tlrc"
+brew "wget"
+brew "yq"
+
+# === Languages — Go ===
+brew "go"
+
+# === Languages — Python ===
+brew "pyenv"
+brew "python@3.12"
+brew "python@3.13"
+
+# === Languages — Java (base deps) ===
+brew "openjdk"
+brew "maven"
+
+# === Languages — Ruby ===
+brew "ruby"
+
+# === Languages — Node (via fnm) ===
+brew "fnm"
+
+# === AI / ML ===
+brew "whisper-cpp"
+
+# === Media ===
+brew "ffmpeg"
+brew "findutils"
+
+# === Fonts ===
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+
+# === Terminal / Keyboard ===
+cask "espanso"
+cask "ghostty"
+cask "karabiner-elements"
+cask "raycast"
+
+# === Browsers ===
+cask "firefox"
+cask "google-chrome"
+
+# === AI / Dev ===
+cask "claude"
+cask "codex"
+cask "ollama"
+
+# === Peripherals ===
+cask "logi-options+"
+
+# === Security ===
+cask "keepassxc"
+
+# === Productivity ===
+cask "miro"
+cask "obsidian"
+cask "spotify"
+cask "todoist"
+cask "visual-studio-code"
+
+# === Mac App Store ===
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
+mas "Pages", id: 409201541
+mas "WhatsApp", id: 310633997
+
+# === VS Code Extensions ===
+vscode "anthropic.claude-code"
+vscode "golang.go"
+vscode "humao.rest-client"
+# === Go Tools ===
+go "github.com/golangci/golangci-lint/v2/cmd/golangci-lint"
+go "golang.org/x/tools/gopls"
+go "github.com/golang/mock/mockgen"
+go "github.com/quasilyte/go-ruleguard/cmd/ruleguard"
+go "honnef.co/go/tools/cmd/staticcheck"
+
+# === Cargo Tools ===
+cargo "cargo-watch"
+cargo "sqlx-cli"

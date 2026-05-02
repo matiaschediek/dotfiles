@@ -1,0 +1,31 @@
+name: Validate dotfiles bootstrap
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap
+        run: bash bootstrap.sh
+      - name: Run tests
+        run: bash test/run-tests.sh
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-report
+          path: test/VALIDATION-REPORT.md
+
+  test-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bootstrap
+        run: bash bootstrap.sh
+      - name: Check
+        run: make check

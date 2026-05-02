@@ -1,0 +1,23 @@
+[core]
+	symlinks = false
+	hooksPath = {{ .chezmoi.homeDir }}/.config/git/hooks
+
+[user]
+	name = Matias Chediek
+	email = {{ .email }}
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[push]
+	autoSetupRemote = true
+
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+
+[include]
+	path = ~/.gitconfig.work
